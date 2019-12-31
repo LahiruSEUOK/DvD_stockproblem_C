@@ -7,6 +7,7 @@
 typedef char qelement;
 int i;
 
+// creating basic requirements
 
 typedef struct node
 {
@@ -24,9 +25,25 @@ typedef struct
     qelement items[max];
 }queue;
 
-queue *q;
+//creating queue
+void createqueue(queue *q)
+{
+ q->count=0;
+ q->front =-1;
+ q->rear= -1;
+}
+void displaystock(queue *q);
+void addtostock(queue *q);
+//void displaynextorder();
+//void displayalloders();
+//void addorder();
+//void processnextorder();
+//void reverselastorder();
+//void displaylastorder();
 
-int isqueuefull()
+
+//int isqueuefull(queue *q);
+int isqueuefull(queue *q)
 {
     if(q->count==max)
         return 1;
@@ -34,17 +51,20 @@ int isqueuefull()
         return 0;
 }
 
-int isqueueuempty()
+int isqueueempty(queue *q)
 {
-    if(q->count==0)
+    if(q->front==-1)
         return 1;
     else
         return 0;
 }
+/* basic finished */
 
-void displayqueue()
+// operations
+
+void displaystock(queue *q)
 {
-if(isqueueuempty()==1)
+if(isqueueempty(q)==1)
     printf("Stock is empty\n");
 else
 {
@@ -55,11 +75,43 @@ else
 }
 }
 
+void addtostock(queue *q)
+{
+    if(isqueuefull(q)==1)
+        printf("Stock is full\nCannot add more\n");
+    else
+    {
+    char id[max];
+    printf("Enter Game ID\n");
+    scanf("%d",&id[q->count]);
+    q->items[q->count]=id[q->count];
+    q->count++;
+    }
+}
 
+
+
+
+
+// main display functions
 int main()
 {
+    int input;
+
     printf("What would you like to do\n");
     printf("[1] - Display Current Stock\n");
     printf("[2] - Add a game to Stock\n");
+    printf("[3] - Display next Order\n");
+
+    queue g;
+    createqueue(queue *g);
+    scanf("%d",&input);
+    switch(input)
+    {
+        case 1 : displaystock(queue*q);break;
+    }
+
+
+
     return 0;
 }
